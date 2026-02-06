@@ -11,129 +11,119 @@
   <meta name="theme-color" content="#1a1a2e">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Les Pompeuses">
-  <link rel="apple-touch-icon" href="/icons/icon-192.png">
 
   <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary: #e63946;
-      --bg: #0d1117;
-      --bg2: #1a1a2e;
-      --text: #ffffff;
-      --radius: 14px;
-      --font: 'Poppins', sans-serif;
+      --primary:#e63946;
+      --bg:#0d1117;
+      --bg2:#1a1a2e;
+      --text:#fff;
+      --radius:14px;
+      --font:'Poppins',sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { box-sizing:border-box; margin:0; padding:0; }
     body {
-      font-family: var(--font);
-      background: linear-gradient(180deg, var(--bg2), var(--bg));
-      color: var(--text);
-      min-height: 100vh;
+      font-family:var(--font);
+      background:linear-gradient(180deg,var(--bg2),var(--bg));
+      color:var(--text);
+      min-height:100vh;
     }
 
-    /* SPLASH */
-    #splash {
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(135deg, var(--bg2), var(--bg));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      transition: opacity .4s ease;
-    }
-
-    #home {
-      display: none;
-      padding: 30px 20px 100px;
-    }
-
-    .logo {
-      width: 80px;
-      height: 80px;
-      border-radius: 20px;
-      margin: 0 auto 15px;
-      display: block;
-    }
-
-    h1 { text-align: center; font-size: 26px; }
-    p.sub { text-align: center; opacity: .6; margin-bottom: 30px; }
+    #home { padding:30px 20px 90px; }
+    h1 { text-align:center; margin-bottom:6px; }
+    p { text-align:center; opacity:.6; margin-bottom:30px; }
 
     .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-bottom: 20px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-bottom:20px;
     }
 
     .card {
-      background: rgba(255,255,255,.08);
-      border-radius: var(--radius);
-      padding: 18px;
-      text-align: center;
-      cursor: pointer;
+      background:rgba(255,255,255,.08);
+      border-radius:var(--radius);
+      padding:18px;
+      text-align:center;
+      cursor:pointer;
     }
 
-    .card span { font-size: 28px; display: block; }
-    .card small { font-weight: 600; }
+    .card span { font-size:28px; display:block; }
+    .card small { font-weight:600; }
 
     .btn {
-      width: 100%;
-      padding: 16px;
-      background: var(--primary);
-      border: none;
-      border-radius: var(--radius);
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
+      width:100%;
+      padding:16px;
+      background:var(--primary);
+      border:none;
+      border-radius:var(--radius);
+      color:#fff;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
     }
 
     #viewer {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: #000;
+      display:none;
+      position:fixed;
+      inset:0;
+      background:#000;
     }
 
     iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+      width:100%;
+      height:100%;
+      border:none;
+    }
+
+    #nav {
+      position:fixed;
+      bottom:0; left:0; right:0;
+      height:64px;
+      background:rgba(26,26,46,.95);
+      display:flex;
+      justify-content:space-around;
+      align-items:center;
+    }
+
+    #nav button {
+      background:none;
+      border:none;
+      color:rgba(255,255,255,.6);
+      font-family:var(--font);
+      font-size:11px;
+      cursor:pointer;
     }
   </style>
 </head>
 
 <body>
 
-<div id="splash">
-  <img src="/icons/icon-192.png" class="logo" alt="">
-  <h1>Les Pompeuses</h1>
-  <p class="sub">Chargement…</p>
-</div>
-
 <div id="home">
-  <img src="/icons/icon-192.png" class="logo" alt="">
   <h1>Les Pompeuses</h1>
-  <p class="sub">Application officielle</p>
+  <p>Application officielle</p>
 
   <div class="grid">
-    <div class="card" onclick="openSite('https://www.lespompeuses.com')">🏠<small>Accueil</small></div>
-    <div class="card" onclick="openSite('https://www.lespompeuses.com/agenda')">📅<small>Agenda</small></div>
-    <div class="card" onclick="openSite('https://www.lespompeuses.com/galerie')">📸<small>Galerie</small></div>
-    <div class="card" onclick="openSite('https://www.lespompeuses.com/contact')">✉️<small>Contact</small></div>
+    <div class="card" onclick="openPage('https://www.lespompeuses.com')">
+      🏠<small>Accueil</small>
+    </div>
+    <div class="card" onclick="openPage('https://www.lespompeuses.com/agenda')">
+      📅<small>Agenda</small>
+    </div>
+    <div class="card" onclick="openPage('https://www.lespompeuses.com/galerie')">
+      📸<small>Galerie</small>
+    </div>
+    <div class="card" onclick="openExternal('https://www.lespompeuses.com/login')">
+      🔐<small>Connexion</small>
+    </div>
   </div>
 
-  <button class="btn" onclick="openSite('https://www.lespompeuses.com')">
-    🚀 Ouvrir le site
+  <button class="btn" onclick="openExternal('https://www.lespompeuses.com/login')">
+    Se connecter avec Google
   </button>
 </div>
 
@@ -141,35 +131,41 @@
   <iframe id="frame" allowfullscreen></iframe>
 </div>
 
-<script>
-  // Splash sécurisé
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      splash.style.opacity = '0';
-      setTimeout(() => {
-        splash.style.display = 'none';
-        home.style.display = 'block';
-      }, 400);
-    }, 1200);
-  });
+<div id="nav">
+  <button onclick="goHome()">Accueil</button>
+  <button onclick="openPage('https://www.lespompeuses.com')">Site</button>
+  <button onclick="openExternal('https://www.lespompeuses.com/login')">Connexion</button>
+</div>
 
+<script>
   const home = document.getElementById('home');
   const viewer = document.getElementById('viewer');
   const frame = document.getElementById('frame');
 
-  function openSite(url) {
+  // Pages SANS login → iframe
+  function openPage(url) {
     frame.src = url;
     home.style.display = 'none';
     viewer.style.display = 'block';
   }
 
-  // Service Worker SAFE
+  // Login / Google → navigateur externe
+  function openExternal(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+  }
+
+  function goHome() {
+    frame.src = '';
+    viewer.style.display = 'none';
+    home.style.display = 'block';
+  }
+
+  // Service Worker safe
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
-    window.addEventListener('load', async () => {
-      const regs = await navigator.serviceWorker.getRegistrations();
-      regs.forEach(r => r.unregister());
-      navigator.serviceWorker.register('/sw.js').catch(()=>{});
-    });
+    navigator.serviceWorker.getRegistrations().then(r =>
+      r.forEach(reg => reg.unregister())
+    );
+    navigator.serviceWorker.register('/sw.js').catch(()=>{});
   }
 </script>
 
