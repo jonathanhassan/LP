@@ -2,8 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
   <title>Les Pompeuses</title>
 
@@ -15,97 +14,154 @@
 
   <!-- PWA -->
   <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#1a1a2e">
+  <meta name="theme-color" content="#0f172a">
 
-  <!-- Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Font (iOS-like) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg:#0d1117;
-      --card:#1a1a2e;
-      --primary:#e63946;
-      --text:#fff;
-      --radius:16px;
-      --font:'Poppins',sans-serif;
+      --bg: #0b0f1a;
+      --glass: rgba(255,255,255,0.08);
+      --glass-border: rgba(255,255,255,0.18);
+      --primary: #0a84ff;
+      --text: #ffffff;
+      --sub: rgba(255,255,255,0.6);
+      --radius: 20px;
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
-    * { box-sizing:border-box; margin:0; padding:0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family:var(--font);
-      background:var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      padding:env(safe-area-inset-top) 20px calc(20px + env(safe-area-inset-bottom));
+      font-family: var(--font);
+      background: radial-gradient(circle at top, #1e293b, var(--bg));
+      color: var(--text);
+      min-height: 100vh;
+      padding:
+        env(safe-area-inset-top)
+        16px
+        calc(16px + env(safe-area-inset-bottom));
     }
 
     header {
-      text-align:center;
-      margin:40px 0 30px;
+      text-align: center;
+      margin: 36px 0 28px;
     }
 
     header img {
-      width:96px;
-      height:96px;
-      border-radius:22px;
-      margin-bottom:14px;
+      width: 88px;
+      height: 88px;
+      border-radius: 22px;
+      margin-bottom: 12px;
     }
 
     header h1 {
-      font-size:26px;
+      font-size: 26px;
+      font-weight: 700;
     }
 
     header p {
-      opacity:.6;
-      font-size:14px;
+      font-size: 14px;
+      color: var(--sub);
+    }
+
+    .section-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--sub);
+      margin: 20px 6px 10px;
     }
 
     .grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-bottom:24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
     }
 
     .card {
-      background:var(--card);
-      border-radius:var(--radius);
-      padding:22px 10px;
-      text-align:center;
-      font-size:15px;
-      font-weight:600;
-      cursor:pointer;
-      transition:transform .15s ease;
+      background: var(--glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius);
+      padding: 20px 10px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform .15s ease, background .15s ease;
     }
 
     .card:active {
-      transform:scale(.96);
+      transform: scale(.96);
+      background: rgba(255,255,255,0.14);
     }
 
     .card span {
-      display:block;
-      font-size:30px;
-      margin-bottom:6px;
+      display: block;
+      font-size: 30px;
+      margin-bottom: 6px;
     }
 
     .btn {
-      width:100%;
-      padding:16px;
-      background:var(--primary);
-      border:none;
-      border-radius:var(--radius);
-      color:#fff;
-      font-size:16px;
-      font-weight:700;
-      cursor:pointer;
+      width: 100%;
+      margin-top: 20px;
+      padding: 16px;
+      border: none;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, #0a84ff, #0066cc);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(10,132,255,.35);
+    }
+
+    .btn:active {
+      transform: scale(.97);
+      opacity: .9;
     }
 
     .hint {
-      text-align:center;
-      font-size:12px;
-      opacity:.5;
-      margin-top:14px;
+      margin-top: 14px;
+      font-size: 12px;
+      text-align: center;
+      color: var(--sub);
+    }
+
+    /* Bottom iOS-style bar */
+    .tabbar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: calc(64px + env(safe-area-inset-bottom));
+      padding-bottom: env(safe-area-inset-bottom);
+      background: rgba(15,23,42,.85);
+      backdrop-filter: blur(25px);
+      border-top: 1px solid rgba(255,255,255,.15);
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .tab {
+      font-size: 11px;
+      text-align: center;
+      color: var(--sub);
+      cursor: pointer;
+    }
+
+    .tab.active {
+      color: var(--primary);
+    }
+
+    .tab span {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 2px;
     }
   </style>
 </head>
@@ -117,6 +173,8 @@
   <h1>Les Pompeuses</h1>
   <p>Accès rapide officiel</p>
 </header>
+
+<div class="section-title">Navigation</div>
 
 <div class="grid">
   <div class="card" onclick="openLink('https://www.lespompeuses.com')">
@@ -138,8 +196,21 @@
 </button>
 
 <p class="hint">
-  Le site s’ouvre dans Safari pour une connexion sécurisée.
+  Connexion sécurisée via Safari (recommandé par Apple & Google)
 </p>
+
+<!-- iOS tab bar -->
+<div class="tabbar">
+  <div class="tab active" onclick="openLink('https://www.lespompeuses.com')">
+    <span>🏠</span>Accueil
+  </div>
+  <div class="tab" onclick="openLink('https://www.instagram.com/lespompeuses')">
+    <span>📸</span>Insta
+  </div>
+  <div class="tab" onclick="openLink('https://www.lespompeuses.com/login')">
+    <span>👤</span>Compte
+  </div>
+</div>
 
 <script>
   function openLink(url) {
@@ -147,10 +218,10 @@
     window.location.href = url;
   }
 
-  // Service Worker ultra-safe (iOS friendly)
+  // Service Worker safe (iOS friendly)
   if ('serviceWorker' in navigator && location.protocol === 'https:') {
-    navigator.serviceWorker.getRegistrations().then(r =>
-      r.forEach(reg => reg.unregister())
+    navigator.serviceWorker.getRegistrations().then(regs =>
+      regs.forEach(r => r.unregister())
     );
     navigator.serviceWorker.register('/sw.js').catch(()=>{});
   }
